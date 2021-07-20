@@ -39,7 +39,13 @@ const App: React.FC = () => {
 			setError('Please enter valid (non-negative) numbers!');
 			return;
 		}
-		const bmi = +enteredWeight / (+enteredHeight * +enteredHeight);
+		const weightConversionFactor = calcUnits === 'ftlbs' ? 2.2 : 1;
+		const heightConversionFactor = calcUnits === 'ftlbs' ? 3.28 : 1;
+
+		const weight = +enteredWeight / weightConversionFactor;
+		const height = +enteredHeight / heightConversionFactor;
+
+		const bmi = weight / (height * height);
 		setCalculatedBmi(bmi);
 	}
 	const resetInputs = () => {
@@ -69,7 +75,7 @@ const App: React.FC = () => {
 						<IonRow>
 							<IonCol>
 								<IonItem>
-									<IonLabel position="floating">Your Height</IonLabel>
+									<IonLabel position="floating">Your Height ({calcUnits === 'mkg' ? 'meters' : 'feet'})</IonLabel>
 									<IonInput type="number" ref={heightInputRef}></IonInput>
 								</IonItem>
 							</IonCol>
@@ -77,7 +83,7 @@ const App: React.FC = () => {
 						<IonRow>
 							<IonCol>
 								<IonItem>
-									<IonLabel position="floating">Your Weight</IonLabel>
+									<IonLabel position="floating">Your Weight ({calcUnits === 'mkg' ? 'kg' : 'lbs'})</IonLabel>
 									<IonInput type="number" ref={weightInputRef}></IonInput>
 								</IonItem>
 							</IonCol>
