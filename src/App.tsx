@@ -46,7 +46,7 @@ const App: React.FC = () => {
 	return (
 		<IonApp>
 			<IonHeader>
-				<IonToolbar>
+				<IonToolbar color="primary">
 					<IonTitle>BMI Calculator</IonTitle>
 				</IonToolbar>
 			</IonHeader>
@@ -56,7 +56,7 @@ const App: React.FC = () => {
 						<IonCol>
 							<IonItem>
 								<IonLabel position="floating">Your Height</IonLabel>
-								<IonInput ref={heightInputRef}></IonInput>
+								<IonInput type="number" ref={heightInputRef}></IonInput>
 							</IonItem>
 						</IonCol>
 					</IonRow>
@@ -64,7 +64,7 @@ const App: React.FC = () => {
 						<IonCol>
 							<IonItem>
 								<IonLabel position="floating">Your Weight</IonLabel>
-								<IonInput ref={weightInputRef}></IonInput>
+								<IonInput type="number" ref={weightInputRef}></IonInput>
 							</IonItem>
 						</IonCol>
 					</IonRow>
