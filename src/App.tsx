@@ -21,11 +21,13 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import InputControl from './components/InputControl';
 
 const App: React.FC = () => {
 
 	const [calculatedBmi, setCalculatedBmi] = useState<number>();
 	const [error, setError] = useState<string>();
+	const [calcUnits, setCalcUnits] = useState<'mkg' | 'ftlbs'>('mkg');
 
 	const weightInputRef = useRef<HTMLIonInputElement>(null);
 	const heightInputRef = useRef<HTMLIonInputElement>(null);
@@ -59,6 +61,11 @@ const App: React.FC = () => {
 				</IonHeader>
 				<IonContent className="ion-padding">
 					<IonGrid>
+						<IonRow>
+							<IonCol>
+								<InputControl selectedValue={calcUnits} onSelectValue={setCalcUnits} />
+							</IonCol>
+						</IonRow>
 						<IonRow>
 							<IonCol>
 								<IonItem>
